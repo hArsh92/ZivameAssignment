@@ -1,0 +1,32 @@
+{
+  "values": [
+    {
+      "name": "Non Padded",
+      "description": "The two layers provide you more support & coverage to prevent nipple show through"
+    },
+    {
+      "name": "Wired",
+      "description": "Underwired for essential support and shaping"
+    },
+    {
+      "name": "3/4th Coverage",
+      "description": "3/4th coverage reduces spillage & offers great support."
+    },
+    {
+      "name": "Polyester Spandex",
+      "description": "Polyester Spandex retains shape and offers good stretch and recovery."
+    },
+    {
+      "name": "Wirefree",
+      "description": "Designed with no underwire for all-day comfort and support"
+    },
+    {
+      "name": "T-Shirt Bra",
+      "description": "T-shirt bras have smooth, moulded and seamless padded cups for a no-show through look."
+    },
+    {
+      "name": "Nylon Spandex",
+      "description": "Nylon infused with Lycra to ensure great stretch and recovery."
+    }
+  ]
+}
