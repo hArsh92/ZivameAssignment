@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import kotlinx.android.synthetic.main.item_product_feature.view.*
 import kotlinx.android.synthetic.main.layout_product_description.view.*
 
-class ProductFeatureAdapter(private val productFeatures: MutableList<ProductFeature?>?) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class ProductFeatureAdapter(val productFeatures: MutableList<ProductFeature?>?) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var selectedPosition = -1
     private var descriptionPosition = -1
@@ -96,7 +96,11 @@ class ProductFeatureAdapter(private val productFeatures: MutableList<ProductFeat
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         if (holder is ProductFeatureView) {
-            holder.bindView(productFeatures?.get(position), holder.adapterPosition == selectedPosition)
+            val dataPosition = baseProductFeatures?.indexOf(productFeatures?.get(position)) ?: position
+            val showLine: Boolean = dataPosition % ProductDetailActivity.gridSpanCount == 0
+
+            holder.bindView(productFeatures?.get(position),
+                    holder.adapterPosition == selectedPosition, showLine)
         } else if (holder is ProductFeatureDescriptionView) {
             if (selectedPosition != -1) {
                 val actualPosition = baseProductFeatures?.indexOf(productFeatures?.get(selectedPosition)) ?: 0
@@ -132,8 +136,8 @@ class ProductFeatureAdapter(private val productFeatures: MutableList<ProductFeat
 
 class ProductFeatureView(view: View) : RecyclerView.ViewHolder(view) {
 
-    fun bindView(productFeature: ProductFeature?, isSelected: Boolean) {
-        itemView?.line?.visibility = if (adapterPosition % ProductDetailActivity.gridSpanCount == 0) {
+    fun bindView(productFeature: ProductFeature?, isSelected: Boolean, showLine: Boolean) {
+        itemView?.line?.visibility = if (showLine) {
             View.GONE
         } else {
             View.VISIBLE
